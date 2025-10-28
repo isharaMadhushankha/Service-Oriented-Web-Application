@@ -1,0 +1,30 @@
+<? version='1.0' encording='UTF-8' ?>
+<Bank id="001">
+    <Customer id='c001'>
+        <id>SEU.IS.20.ICT.026</id>
+        <aacountno>12345678</accountno>
+        <name>ishara</name>
+        <address>galle hikkaduwa</address>
+        <age>24</age>
+    </Customer>
+
+    <Customer id="002"> 
+       <id>SEU.IS.20.ICT.084</id>
+       <name>kalhara</name>
+       <address>dolakanda</addres>
+       <age>25</age>
+    </Custommer>
+</Bank>
+
+<University id='001'>
+    <lecturers id="l001">
+        <id>seu.is.20.ict.026</id>
+        <name>ishara</name>
+        <age>25</age>
+    </lecturers>
+     <lecturers id="l001">
+         <id>seu.is.20.ict.084</id>
+        <name>kalhara</name>
+        <age>26</age>
+    </lecturers>
+</University>

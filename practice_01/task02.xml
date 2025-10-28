@@ -1,0 +1,24 @@
+<? xml version="1.0" encording="UTF-8"?>
+<Cart>
+    <Items>
+        <Item id='i001' quantity="05">
+            <name>laptop</name>
+            <price>100$</price>
+            <catagory>A</catagory>
+        <Item>
+        <Item id='i002'>
+             <name>laptop</name>
+            <price>100$</price>
+            <catagory>A</catagory>
+        <Item>
+    </Items>
+
+    <Customer membership='golf'>
+        <address>
+            <Street>kohombagha watta</Street>
+            <city>hikkaduwa</city>
+            <zip>2333</zip>
+            <county>Stri lanka</county>
+        </address>
+    </Customer>
+</cart>

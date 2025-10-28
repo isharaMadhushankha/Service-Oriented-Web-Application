@@ -1,0 +1,22 @@
+<? version="1.0" encording="UTF-8"?>
+<Registration>
+    <Students id='s001' year="2025">
+        <course id="c001" credit="2" courseCode="CIS2022">
+            <courseName>SOWA</courseName>
+            <Instructor></Instructor>
+            <shedule>
+                <Time>9.00</Time>
+                <days>2025.10.10</days>
+            </shedule>
+        </course>
+
+        <course id="c001=3" credit="2" courseCode="CIS2022">
+            <courseName>SOWA</courseName>
+            <Instructor></Instructor>
+            <shedule>
+                <Time>9.00</Time>
+                <days>2025.10.10</days>
+            </shedule>
+        </course>
+    </Students>
+</Registration>
