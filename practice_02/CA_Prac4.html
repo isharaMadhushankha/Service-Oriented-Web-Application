@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Get Attribute</title></head>
+<body>
+<h3>Get Attribute Value</h3>
+<div id="XMLDOM"></div>
+
+<script>
+var xmlString = `<?xml version="1.0"?>
+<bookstore>
+ <book category="Entertainment"><title lang="En">Harry Potter</title></book>
+ <book category="Fiction"><title lang="En">Avengers</title></book>
+</bookstore>`;
+
+var parser = new DOMParser();
+var xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+var txt = "";
+var books = xmlDoc.getElementsByTagName("book");
+for (var i = 0; i < books.length; i++) {
+    txt += books[i].getAttribute("category") + "<br>";
+}
+
+document.getElementById("XMLDOM").innerHTML = txt;
+</script>
+</body>
+</html>
