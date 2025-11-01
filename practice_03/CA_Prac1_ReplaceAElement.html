@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        var text,parser,xmlDoc;
+
+        var text = `<bookstore>
+                        <book><title>Harry Potter</title></book>
+                        <book><title>Avengers</title></book>
+                        </bookstore>`;
+
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(text,"text/xml");
+
+        let newbook = xmlDoc.createElement("book");
+        let newtitle = xmlDoc.createElement("title");
+
+        newtitle.appendChild(xmlDoc.createTextNode("this is new text"));
+        newbook.appendChild(newtitle);
+
+        xmlDoc.documentElement.replaceChild(newbook,xmlDoc.getElementsByTagName('book')[0]);
+
+        console.log(xmlDoc.getElementsByTagName('bookstore')[0]);
+    </script>
+</body>
+</html>
