@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content"></div>
+
+<script>
+var xmlString = `<bookstore>
+    <book><title>Harry Potter</title></book>
+    <book><title>Avengers</title></book>
+</bookstore>`;
+
+var parser = new DOMParser();
+var xmlDoc = parser.parseFromString(xmlString,"text/xml");
+
+
+var firstbook = xmlDoc.getElementsByTagName('title')[0].childNodes[0];
+
+
+firstbook.insertData(6,"ishara");
+
+var books = xmlDoc.getElementsByTagName('title');
+console.log(books);
+
+let all = "";
+for(var i= 0 ; i < books.length;i++){
+    all+= books[i].childNodes[0].nodeValue + "<br>"
+}
+
+document.getElementById('content').innerHTML = all;
+</script>
+</body>
+</html>
