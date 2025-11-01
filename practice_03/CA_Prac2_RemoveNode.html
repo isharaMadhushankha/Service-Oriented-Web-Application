@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="XMLDOM"></div>
+
+<script>
+var xmlString = `<bookstore>
+ <book><title>Harry Potter</title></book>
+ <book><title>Avengers</title></book>
+</bookstore>`;
+var parser = new DOMParser();
+var xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+var book = xmlDoc.documentElement;
+book.removeChild(book.childNodes[3]);
+
+var x = xmlDoc.getElementsByTagName('bookstore')[0];
+console.log(x);
+
+</script>
+</body>
+</html>
