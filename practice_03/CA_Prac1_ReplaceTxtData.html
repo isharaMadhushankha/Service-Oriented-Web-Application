@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+     <div id="content"></div>
+
+     <script>
+        var text,parser,xmlDoc;
+
+        text = "<bookStore>"
+                    +"<book>"+
+                        "<tittle>Everyday Italian</tittle>"+"<author>Giada De Laurentiis</author>"+"<year>2005</year>"
+                    +"</book>"
+                    +"<book>"+
+                         "<tittle>Java Programming</tittle>"+"<author>John Willson</author>"+"<year>2007</year>"
+                    +"</book>"+
+               "</bookStore>"
+
+            parser = new DOMParser();
+            xmlDoc = parser.parseFromString(text,"text/xml");
+
+                    
+        var titlenode = xmlDoc.getElementsByTagName('tittle')[0].childNodes[0];
+        titlenode.replaceData(0,titlenode.nodeValue.length,"this is Prown 🍤");
+
+        document.getElementById('content').innerHTML = xmlDoc.getElementsByTagName('tittle')[0].childNodes[0].nodeValue;
+
+
+    </script>
+</body>
+</html>
