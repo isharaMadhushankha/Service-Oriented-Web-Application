@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content" style="background-color: aqua; color:black;"></div>
+
+    <script>
+        var text,parser,xmlDoc;
+           text =
+        "<bookstore>" +
+        "<book catagory='abc'>" +
+        "<title>book1</title>" +
+        "<author>ishara1</author>" +
+        "<year>2001</year>" +
+        "</book>" +
+        "<book catagory='efg'>" +
+        "<title>book2</title>" +
+        "<author>ishara2</author>" +
+        "<year>2002</year>" +
+        "</book>" +
+        "<book catagory='hij'>" +
+        "<title>book3</title>" +
+        "<author>ishara3</author>" +
+        "<year>2003</year>" +
+        "</book>" +
+        "</bookstore>";
+
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(text,"text/xml");
+
+       
+        var book = xmlDoc.getElementsByTagName('book');
+         let txt = "";
+        for(var i=0;i<book.length;i++){
+            txt+= book[i].getAttribute('catagory') + '</br>'
+        }
+        document.getElementById('content').innerHTML = txt;
+        
+    </script>
+
+
+    
+</body>
+</html>

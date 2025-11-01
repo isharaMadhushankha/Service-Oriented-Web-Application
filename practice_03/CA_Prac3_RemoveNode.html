@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>Remove Element</title></head>
+<body>
+<h3>Remove Element Node</h3>
+<div id="XMLDOM"></div>
+
+<script>
+var xmlString = `<bookstore>
+ <book><title>Harry Potter</title></book>
+ <book><title>Avengers</title></book>
+</bookstore>`;
+var parser = new DOMParser();
+var xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+var root = xmlDoc.documentElement;
+console.log(root);
+var removedNode = root.removeChild(root.childNodes[3]);
+
+document.getElementById("XMLDOM").innerHTML = "Removed Node: " + removedNode.nodeName;
+</script>
+</body>
+</html>
