@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content"></div>
+
+<script>
+var xmlString = `<bookstore>
+    <book><title>Harry Potter</title></book>
+    <book><title>Avengers</title></book>
+</bookstore>`;
+
+var parser = new DOMParser();
+var xmlDoc = parser.parseFromString(xmlString,"text/xml");
+
+var bookstore = xmlDoc.getElementsByTagName('bookstore')[0];
+var firstbook = xmlDoc.getElementsByTagName('book')[0];
+
+var newtext = xmlDoc.createTextNode("this is 🍭");
+var newtitle = xmlDoc.createElement('title');
+var newbook = xmlDoc.createElement('book');
+
+newtitle.appendChild(newtext);
+newbook.appendChild(newtitle);
+
+bookstore.insertBefore(newbook,firstbook);
+
+var books = xmlDoc.getElementsByTagName('title');
+console.log(books);
+
+let all = "";
+for(var i= 0 ; i < books.length;i++){
+    all+= books[i].childNodes[0].nodeValue + "<br>"
+}
+
+document.getElementById('content').innerHTML = all;
+</script>
+</body>
+</html>
