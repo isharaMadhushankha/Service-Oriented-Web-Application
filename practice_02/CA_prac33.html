@@ -6,7 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-      <div id="content"></div> 
+
+    <div id="content"></div> 
       <script>
         var text,parser,xmlDoc;
         
@@ -50,23 +51,22 @@
 
             parser = new DOMParser();
             xmlDoc = parser.parseFromString(text,"text/xml");
+        
+        var x = xmlDoc.getElementsByTagName('Price');
+        var all = "";
+        for(var i =0; i< x.length;i++){
+            var oldprice = x[i].childNodes[0].nodeValue.replace("$","");
+            var newprice = (oldprice *  1.10).toFixed(2);
+            x[i].childNodes[0].nodeValue = "$"+ newprice;
+        }
 
-            var price = xmlDoc.getElementsByTagName('Price');
+        let update = "update price: \n"; 
+        for(var j =0 ; j < x.length; j++){
+            update += (j+1) + "." + x[j].childNodes[0].nodeValue + "<br>"
+        }
 
-            for(var i=0;i< price.length;i++){
-                let oldprice = price[i].childNodes[0].nodeValue.replace("$","");
-                let newprice = (oldprice * 1.10).toFixed(2);
-                price[i].childNodes[0].nodeValue="$"+ newprice;
-            }
-            
-            let update = "update price: \n";
-
-            for(var x=0;x<price.length;x++){
-                update+=(x+1)+"."+ price[x].childNodes[0].nodeValue + "<br>"
-            }
-
-            document.getElementById('content').innerHTML = update;
-            
-      </script>
+        document.getElementById('content').innerHTML = update;
+        </script>
+    
 </body>
 </html>

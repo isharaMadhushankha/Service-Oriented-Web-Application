@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <table border="2px solid-red">
+        <tr>
+            <th>Tittle</th>
+            <th>Auther</th>
+            <th>year</th>
+        </tr>
+        <tr>
+            <td id="1"></td>
+            <td id="2"></td>
+            <td id="3"></td>
+        </tr>
+        <tr>
+            <td id="4"></td>
+            <td id="5"></td>
+            <td id="6"></td>
+        </tr>
+    </table>
+
+    <script>
+        var text,parser,xmlDoc;
+
+        text = "<bookstore>"+
+                    "<book>"+"<title>book1</title>"+"<author>ihara</author>"+"<year>2025</year>"+"</book>"+
+                    "<book>"+"<title>book2</title>"+"<author>sanka</author>"+"<year>2024</year>"+"</book>"+
+                    "<book>"+"<title>book3</title>"+"<author>madushanka</author>"+"<year>2023</year>"+"</book>"+
+               "</bookstore>"
+               
+            parser = new DOMParser();
+            xmlDoc = parser.parseFromString(text,"text/xml");
+
+            document.getElementById('1').innerHTML = xmlDoc.getElementsByTagName('title')[0].childNodes[0].nodeValue;
+            document.getElementById('2').innerHTML = xmlDoc.getElementsByTagName('author')[0].childNodes[0].nodeValue;
+            document.getElementById('3').innerHTML = xmlDoc.getElementsByTagName('year')[0].childNodes[0].nodeValue;
+            document.getElementById('4').innerHTML = xmlDoc.getElementsByTagName('title')[1].childNodes[0].nodeValue;
+            document.getElementById('5').innerHTML = xmlDoc.getElementsByTagName('author')[1].childNodes[0].nodeValue;
+            document.getElementById('6').innerHTML = xmlDoc.getElementsByTagName('year')[1].childNodes[0].nodeValue;
+            
+
+    </script>
+</body>
+</html>

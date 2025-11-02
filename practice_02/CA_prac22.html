@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <table border="2px solid-red">
+        <tr>
+            <th>Tittle</th>
+            <th>Auther</th>
+            <th>year</th>
+        </tr>
+        <tr>
+            <td id="a1"></td>
+            <td id="a2"></td>
+            <td id="a3"></td>
+        </tr>
+        <tr>
+            <td id="a4"></td>
+            <td id="a5"></td>
+            <td id="a6"></td>
+        </tr>
+         <tr>
+            <td id="a7"></td>
+            <td id="a8"></td>
+            <td id="a9"></td>
+        </tr>
+    </table>
+
+    <script>
+        var text,parser,xmlDoc;
+
+        var text = "<bookstore>"+
+                        "<book>"+"<title>book1</title>"+"<author>ishara1</author>"+"<year>2025</year>"+"</book>"+
+                         "<book>"+"<title>book2</title>"+"<author>ishara2</author>"+"<year>2023</year>"+"</book>"+  
+                           "<book>"+"<title>book3</title>"+"<author>ishara3</author>"+"<year>2022</year>"+"</book>"+  
+                   "</booksore>"
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(text,"text/xml");
+
+        var x = xmlDoc.getElementsByTagName('book');
+       
+        for(var i=0;i < x.length;i++){
+
+            var title = x[i].getElementsByTagName('title')[0].childNodes[0].nodeValue;
+            var author = x[i].getElementsByTagName('author')[0].childNodes[0].nodeValue;
+            var year = x[i].getElementsByTagName('year')[0].childNodes[0].nodeValue;
+
+            document.getElementById("a"+(i * 3 +1 ).toString()).innerHTML = title;
+            document.getElementById("a"+(i * 3 +2 ).toString()).innerHTML = author;
+            document.getElementById("a"+(i * 3 +3).toString()).innerHTML = year;
+
+        }
+
+    </script>
+</body>
+</html>

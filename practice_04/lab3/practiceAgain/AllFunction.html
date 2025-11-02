@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="" style="border: 2px solid black;">
+        <p id="task1"></p>
+        <p id="task2"></p>
+        <p id="task3"></p>
+        <p id="task4"></p>
+        <p id="task5"></p>
+        <p id="task6"></p>
+        <p id="task7"></p>
+        <p id="task8"></p>
+        <p id="task9"></p>
+        <p id="task10"></p>
+    </div>
+
+    <script>
+        var text,parser,xmlDoc;
+
+        text = `<?xml version="1.0" encoding="UTF-8"?>
+        <bookstore>
+            <book category="Entertainment">
+                <title lang="En">Harry Potter</title>
+                <Author>JK. Rowling</Author>
+                <Year>2009</Year>
+                <Price>$45.99</Price>
+            </book>
+            <book category="Fiction">
+                <title lang="En">Avengers</title>
+                <Author>Warner Bros</Author>
+                <Year>2010</Year>
+                <Price>$32.89</Price>
+            </book>
+            <book category="Mysery">
+                <title lang="Sp">The Great Gatsby</title>
+                <Author>F Scott Fitzgerald</Author>
+                <Year>1920</Year>
+                <Price>$1.99</Price>
+            </book>
+            <book category="Historical">
+                <title lang="Fr">Things Fall Apart</title>
+                <Author>Chinua Achebe</Author>
+                <Year>1958</Year>
+                <Price>$12.99</Price>
+            </book>
+            <book category="Tragedy">
+                <title lang="Es">Hamlet</title>
+                <Author>William Shakespeare</Author>
+                <Year>1601</Year>
+                <Price>$24.99</Price>
+            </book>
+        </bookstore>`;
+
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(text,'text/xml');
+
+    //getAttribute
+    var att1 = xmlDoc.getElementsByTagName('book');
+    
+    let txt = "";
+    for(var i =0 ; i< att1.length;i++){
+        txt += att1[i].getAttribute('category') + "<br>"
+    }
+
+    document.getElementById('task1').innerHTML = txt;
+
+    //setAttribute
+    var book1 = xmlDoc.getElementsByTagName('book')[0];
+        book1.setAttribute('category',"new attribute🍒");
+    
+    let txt2 = "";
+    for(var i =0 ; i< att1.length;i++){
+        txt2 += att1[i].getAttribute('category') + "<br>"
+    }
+
+    document.getElementById('task2').innerHTML = txt2; 
+
+    //removeNode
+    var all = xmlDoc.documentElement;
+    all.removeChild(all.childNodes[3]);
+
+    var att2 = xmlDoc.getElementsByTagName('book');
+    let txt3 = "";
+    for(var i =0 ; i< att2.length;i++){
+        txt3 += att2[i].getAttribute('category') + "<br>"
+    }
+
+    document.getElementById('task3').innerHTML = txt3; 
+
+    //removeAttribute
+    var att3 = xmlDoc.getElementsByTagName('book')[1];
+    att3.removeAttribute('category');
+
+    var att3 = xmlDoc.getElementsByTagName('book');
+    let txt4 = "";
+    for(var i =0 ; i< att3.length;i++){
+        txt4 += att3[i].getAttribute('category') + "<br>"
+    }
+
+    document.getElementById('task4').innerHTML = txt4; 
+
+    //replaceNode
+
+    var newText = xmlDoc.createTextNode('this is the new element🍋');
+    var newtitle = xmlDoc.createElement('title');
+    var newbook = xmlDoc.createElement('book');
+
+    newtitle.appendChild(newText);
+    newbook.appendChild(newtitle);
+
+    xmlDoc.documentElement.replaceChild(newbook,xmlDoc.getElementsByTagName('book')[3]);
+
+    document.getElementById('task5').innerHTML = xmlDoc.getElementsByTagName('title')[3].childNodes[0].nodeValue;
+
+    //replaceText
+    var text4 = xmlDoc.getElementsByTagName('title')[2].childNodes[0];
+    text4.replaceData(0,text4.nodeValue.length,"this is the new txt🍍");
+
+     document.getElementById('task6').innerHTML = xmlDoc.getElementsByTagName('title')[2].childNodes[0].nodeValue;
+
+    //insertdata
+    var new2 = xmlDoc.getElementsByTagName('title')[0].childNodes[0];
+    new2.insertData(6,"xx🥭");
+
+    document.getElementById('task7').innerHTML = xmlDoc.getElementsByTagName('title')[0].childNodes[0].nodeValue;
+
+    //insertBefore
+    var bookstore3 = xmlDoc.getElementsByTagName('bookstore')[0];
+    var book5 = xmlDoc.getElementsByTagName('book')[0];
+
+    var newtext3 = xmlDoc.createTextNode('new book 🍏');
+    var newtitle3 = xmlDoc.createElement('title');
+    var newbook3 = xmlDoc.createElement('book');
+
+    newtitle3.appendChild(newtext3);
+    newbook3.appendChild(newtitle3);
+
+    bookstore3.insertBefore(newbook3,book5);
+
+     var att6 = xmlDoc.getElementsByTagName('book');
+    let txt0 = "";
+    for(var i =0 ; i< att6.length;i++){
+        txt0 += att6[i].getAttribute('category') + "<br>"
+    }
+
+    // document.getElementById('task8').innerHTML = txt0; 
+    document.getElementById('task8').innerHTML = xmlDoc.getElementsByTagName('title')[0].childNodes[0].nodeValue;
+
+    //createAttribute
+    var book11 = xmlDoc.getElementsByTagName('book')[0];
+
+    var attribu = xmlDoc.createAttribute('category');
+    attribu.value = "🍌";
+    book11.setAttributeNode(attribu);
+
+    var att7 = xmlDoc.getElementsByTagName('book');
+    let txt9 = "";
+    for(var i =0 ; i< att7.length;i++){
+        txt9 += att7[i].getAttribute('category') + "<br>"
+    }
+
+    document.getElementById('task9').innerHTML = txt9; 
+
+    //cloneNode 
+
+    var copy = xmlDoc.getElementsByTagName('book')[0];
+    var copy2 = copy.cloneNode(true);
+
+    console.log(copy2);
+
+    xmlDoc.documentElement.appendChild(copy2);
+
+    document.getElementById('task10').innerHTML = xmlDoc.getElementsByTagName('title')[5].childNodes[0].nodeValue;
+
+
+
+    </script>
+</body>
+</html>

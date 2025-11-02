@@ -1,0 +1,17 @@
+<?xml version="1.0" encording="UTF=8"?>
+<graph>
+    <node>
+        <lable>A</lable>
+    </node>
+    <node>
+        <lable>A</lable>
+    </node>
+    <node>
+       <lable>A</lable>
+    </node>
+
+    <edge sourse="1" target="2">
+    <edge sourse="2" target="3">
+    <edge sourse="3" target="1">
+    
+</graph>
